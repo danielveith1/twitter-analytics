@@ -20,16 +20,18 @@ api = twitter.Api(consumer_key=ckey,
                       access_token_secret=asecret)
 #verifyCredentials only necessary to verify authentication
 #print api.VerifyCredentials()
-
+user = "RealHughJackman"
 # obtaining timeline from a specific user					  
-statuses = api.GetUserTimeline(screen_name="RealHughJackman")
+statuses = api.GetUserTimeline(screen_name=user)
 # used dir(s) to find all the attributes of statuses that is retrived from the timeline
 #print [dir(s) for s in statuses]					  
-print [s.retweet_count for s in statuses]
+print "The Tweets of " + user + " and the retweets they received.\n"
+for s in statuses:
+	print("On " + time.strftime('%Y-%m-%d %H:%M:%S', time.strptime(s.created_at,'%a %b %d %H:%M:%S +0000 %Y')) + " the tweet received " + str(s.retweet_count) +" retweets.")
 #FavoriteCount is another attribute that would be useful to analyze
 
 #ts = time.strftime('%Y-%m-%d %H:%M:%S', time.strptime(tweet['created_at'],'%a %b %d %H:%M:%S +0000 %Y'))
-print [time.strftime('%Y-%m-%d %H:%M:%S', time.strptime(s.created_at,'%a %b %d %H:%M:%S +0000 %Y')) for s in statuses]
+#print [time.strftime('%Y-%m-%d %H:%M:%S', time.strptime(s.created_at,'%a %b %d %H:%M:%S +0000 %Y')) for s in statuses]
 
 
 '''
