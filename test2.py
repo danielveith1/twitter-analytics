@@ -27,6 +27,7 @@ statuses = api.GetUserTimeline(screen_name=user)
 #print [dir(s) for s in statuses]					  
 print "The Tweets of " + user + " and the retweets they received.\n"
 for s in statuses:
+	#print dir(s)
 	print("On " + time.strftime('%Y-%m-%d %H:%M:%S', time.strptime(s.created_at,'%a %b %d %H:%M:%S +0000 %Y')) + " the tweet received " + str(s.retweet_count) +" retweets.")
 #FavoriteCount is another attribute that would be useful to analyze
 
